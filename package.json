@@ -1,5 +1,5 @@
 {
-  "name": "code-atlas",
+  "name": "ts-code-atlas",
   "version": "0.1.0",
   "description": "A living map of a TypeScript codebase built by the compiler. ECS frame data flow, calls, tests and docs for people and AI agents.",
   "keywords": [

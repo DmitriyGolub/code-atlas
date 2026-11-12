@@ -62,7 +62,7 @@ if (command === 'help') {
 } else if (command === 'init') {
   const file = join(root, CONFIG_FILE)
   const { config, report } = detectConfig(root)
-  const text = `${JSON.stringify({ $schema: './node_modules/code-atlas/schema/config.schema.json', ...config }, null, 2)}\n`
+  const text = `${JSON.stringify({ $schema: './node_modules/ts-code-atlas/schema/config.schema.json', ...config }, null, 2)}\n`
   for (const line of report) console.log(line)
   if (options.print === 'yes') console.log(`\n${text}`)
   else if (existsSync(file)) { console.error(`${CONFIG_FILE} already exists, run with --print yes to compare`); process.exit(1) }

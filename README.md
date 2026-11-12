@@ -1,6 +1,6 @@
 # code-atlas
 
-[![npm version](https://img.shields.io/npm/v/code-atlas)](https://www.npmjs.com/package/code-atlas) [![CI](https://github.com/DmitriyGolub/code-atlas/actions/workflows/ci.yml/badge.svg)](https://github.com/DmitriyGolub/code-atlas/actions/workflows/ci.yml) [![license](https://img.shields.io/github/license/DmitriyGolub/code-atlas)](LICENSE)
+[![npm version](https://img.shields.io/npm/v/ts-code-atlas)](https://www.npmjs.com/package/ts-code-atlas) [![CI](https://github.com/DmitriyGolub/code-atlas/actions/workflows/ci.yml/badge.svg)](https://github.com/DmitriyGolub/code-atlas/actions/workflows/ci.yml) [![license](https://img.shields.io/github/license/DmitriyGolub/code-atlas)](LICENSE)
 
 A living map of a TypeScript project, built by the compiler, for people and for AI agents.
 
@@ -29,7 +29,7 @@ code-atlas gives both people and agents the same exact picture, kept fresh by th
 ## Start
 
 ```
-npm install --save-dev code-atlas
+npm install --save-dev ts-code-atlas
 npx code-atlas init
 npx code-atlas build
 npx code-atlas serve
