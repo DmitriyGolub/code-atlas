@@ -27,11 +27,13 @@ code-atlas gives both people and agents the same exact picture, kept fresh by th
 ## Start
 
 ```
-npm install --save-dev github:DmitriyGolub/code-atlas
+npm install --save-dev code-atlas
 npx code-atlas init
 npx code-atlas build
 npx code-atlas serve
 ```
+
+To try the latest code from GitHub, install `github:DmitriyGolub/code-atlas` instead.
 
 `init` finds your folders, tests and ECS layout, writes `code-atlas.config.json`, adds the agent skill to `.claude/skills/` and a short section to `CLAUDE.md` or `AGENTS.md`. Pass `--agents no` to skip the agent part. A project without ECS gets a map of calls between functions.
 
@@ -133,6 +135,6 @@ With text search an agent has to open those files, tell reads from writes and se
 
 ## Improving code-atlas
 
-The analyzer lives in `src/analyze`, the viewer in `ui/src`. `npm run build:ui` rebuilds the viewer into `viewer/`, `npm run check:ui` type checks it. Every source file stays under 150 lines, and rules such as test folders and skipped folders are config keys rather than code. A change to the analyzer should leave the maps of existing projects byte for byte the same unless it adds information on purpose.
+The analyzer lives in `src/analyze`, the viewer in `ui/src`. `npm run build:ui` rebuilds the viewer into `viewer/`, `npm run check:ui` type checks it, `npm test` runs the analyzer on the projects in `test/fixtures`. CI checks all three on every push. A GitHub release publishes the package to npm. Every source file stays under 150 lines, and rules such as test folders and skipped folders are config keys rather than code. A change to the analyzer should leave the maps of existing projects byte for byte the same unless it adds information on purpose.
 
 MIT

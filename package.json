@@ -1,13 +1,35 @@
 {
   "name": "code-atlas",
   "version": "0.1.0",
-  "description": "A living map of a TypeScript codebase built from the AST: ECS systems, components and the data flow of a frame, or calls between functions in any project. A viewer for people, a CLI for agents.",
-  "type": "module",
+  "description": "A living map of a TypeScript codebase built by the compiler. ECS frame data flow, calls, tests and docs for people and AI agents.",
+  "keywords": [
+    "typescript",
+    "static-analysis",
+    "code-map",
+    "architecture",
+    "documentation",
+    "ecs",
+    "bitecs",
+    "game-development",
+    "ai-agents",
+    "llm",
+    "developer-tools",
+    "nestjs",
+    "angular",
+    "react",
+    "monorepo"
+  ],
+  "author": "Dmitrii Golub",
   "license": "MIT",
+  "homepage": "https://github.com/DmitriyGolub/code-atlas#readme",
+  "bugs": {
+    "url": "https://github.com/DmitriyGolub/code-atlas/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DmitriyGolub/code-atlas.git"
   },
+  "type": "module",
   "bin": {
     "code-atlas": "bin/code-atlas.mjs"
   },
@@ -28,25 +50,21 @@
   ],
   "scripts": {
     "build:ui": "node ui/build.mjs",
-    "check:ui": "tsc -p ui/tsconfig.json"
+    "check:ui": "tsc -p ui/tsconfig.json",
+    "test": "node --test test/*.test.mjs",
+    "prepublishOnly": "npm run check:ui && npm test"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=20.11"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   },
   "dependencies": {
     "typescript": "5.9.3"
   },
   "devDependencies": {
     "esbuild": "^0.28.2"
-  },
-  "keywords": [
-    "ecs",
-    "bitecs",
-    "code-map",
-    "static-analysis",
-    "architecture",
-    "documentation",
-    "typescript",
-    "ai-agents"
-  ]
+  }
 }
