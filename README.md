@@ -1,5 +1,7 @@
 # code-atlas
 
+[![npm version](https://img.shields.io/npm/v/code-atlas)](https://www.npmjs.com/package/code-atlas) [![CI](https://github.com/DmitriyGolub/code-atlas/actions/workflows/ci.yml/badge.svg)](https://github.com/DmitriyGolub/code-atlas/actions/workflows/ci.yml) [![license](https://img.shields.io/github/license/DmitriyGolub/code-atlas)](LICENSE)
+
 A living map of a TypeScript project, built by the compiler, for people and for AI agents.
 
 ![The frame of an ECS game in the viewer](docs/viewer-frame.png)
