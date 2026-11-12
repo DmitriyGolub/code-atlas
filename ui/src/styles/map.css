@@ -1,0 +1,62 @@
+.code-atlas main { grid-column: 2; grid-row: 2; display: flex; flex-direction: column; min-height: 0; min-width: 0; position: relative }
+.code-atlas main > .frame, .code-atlas main > .list { flex: 1 1 auto }
+.code-atlas main > .toolbar, .code-atlas main > .dock, .code-atlas main > .rail-bottom { flex: none }
+.code-atlas .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 10px 16px; border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted) }
+.code-atlas .zoom { display: inline-flex; align-items: center; border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden }
+.code-atlas .zoom button { border: 0; border-radius: 0; background: var(--block); padding: 5px 10px; font-size: 13px }
+.code-atlas .zoom button + span, .code-atlas .zoom span + button, .code-atlas .zoom button + button { border-left: 1px solid var(--line-strong) }
+.code-atlas .zoom span { padding: 0 10px; font: 12px var(--mono); color: var(--soft); min-width: 52px; text-align: center }
+.code-atlas label.toggle { display: inline-flex; gap: 6px; align-items: center; color: var(--soft); cursor: pointer; font-size: 13px; white-space: nowrap }
+.code-atlas .legend { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; margin-left: auto }
+.code-atlas .legend span { white-space: nowrap }
+.code-atlas .legend .line { display: inline-block; width: 18px; border-top: 2px solid; vertical-align: middle; margin-right: 5px }
+.code-atlas .legend .line.event { border-color: var(--event) } .code-atlas .legend .line.tag { border-color: var(--tag) } .code-atlas .legend .line.field { border-color: var(--field) } .code-atlas .legend .line.next { border-color: var(--muted); border-top-style: dashed }
+.code-atlas .legend .number { font: 10px var(--mono); border: 1px solid var(--line-strong); border-radius: 4px; padding: 0 4px; margin-right: 5px }
+
+.code-atlas .frame { overflow: auto; min-height: 0 }
+.code-atlas .canvas { position: relative; margin: 18px 20px 40px }
+.code-atlas .column { position: absolute; top: 0; border-top: 1px solid var(--line-strong); padding-top: 8px }
+.code-atlas .column b { display: block; font: 600 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-left: 4px }
+.code-atlas .node { position: absolute; height: 28px; border-radius: 7px; background: var(--block); border: 1px solid var(--line-strong); display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 0 10px; font: 12px var(--mono); cursor: pointer; color: var(--soft); z-index: 2 }
+.code-atlas .node:hover { border-color: var(--accent); color: var(--ink) }
+.code-atlas .node span { min-width: 0 }
+.code-atlas .node small { color: var(--muted); font-size: 11px; flex: none }
+.code-atlas .node.fresh { border-color: var(--fresh); box-shadow: inset 3px 0 0 var(--fresh) }
+.code-atlas .node.flagged::after { content: ""; position: absolute; right: -4px; top: -4px; width: 8px; height: 8px; border-radius: 50%; background: var(--bad) }
+.code-atlas .node.selected { background: var(--accent-soft); border: 1.5px solid var(--accent); color: var(--ink); font-weight: 600 }
+.code-atlas .node.related { border-color: #4b3f80; color: var(--ink) }
+.code-atlas .node.writer { border-color: var(--fresh); color: var(--ink) }
+.code-atlas .node.dim { opacity: .3 }
+.code-atlas .canvas svg { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: visible }
+.code-atlas .canvas path { fill: none; stroke-width: 1.4; opacity: .45 }
+.code-atlas .canvas path.event, .code-atlas .canvas path.call { stroke: var(--event) } .code-atlas .canvas path.tag { stroke: var(--tag) } .code-atlas .canvas path.field { stroke: var(--field); opacity: .3 }
+.code-atlas .canvas path.call { opacity: .22 }
+.code-atlas .canvas path.next { stroke-dasharray: 5 5 } .code-atlas .canvas path.dim { opacity: .04 } .code-atlas .canvas path.lit { opacity: 1; stroke-width: 2; stroke: var(--accent) }
+
+.code-atlas .list { overflow: auto; min-height: 0; padding: 0 16px 24px }
+.code-atlas .list table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed }
+.code-atlas .list th { position: sticky; top: 0; background: var(--bg); text-align: left; font: 600 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 12px 10px 8px; border-bottom: 1px solid var(--line-strong); cursor: pointer }
+.code-atlas .list th:hover, .code-atlas .list th.sorted { color: var(--ink) }
+.code-atlas .list td { padding: 7px 10px; border-bottom: 1px solid var(--line); color: var(--soft); font-family: var(--mono); font-size: 12px }
+.code-atlas .list td:first-child { color: var(--ink) }
+.code-atlas .list tr[data-go] { cursor: pointer }
+.code-atlas .list tr[data-go]:hover td { background: var(--block) }
+.code-atlas .list tr.current td { background: var(--accent-soft) }
+.code-atlas .list .hint { padding: 12px 10px }
+.code-atlas .list.tree-view { padding: 0 }
+.code-atlas .tree-areas { position: sticky; top: 0; left: 0; z-index: 3; display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 16px; background: var(--bg); border-bottom: 1px solid var(--line) }
+.code-atlas .tree-areas button { display: inline-flex; align-items: center; gap: 4px }
+.code-atlas .tree-areas button.active { background: var(--accent-soft); border-color: var(--accent); color: var(--ink) }
+.code-atlas .tree-canvas { position: relative }
+.code-atlas .tree-canvas svg { position: absolute; inset: 0; pointer-events: none }
+.code-atlas .tree-canvas path { fill: none; stroke: var(--line-strong); stroke-width: 1.4 }
+.code-atlas .tree-node { position: absolute; height: 30px; display: flex; align-items: center; gap: 6px; padding: 0 10px; font: 12px var(--mono); text-align: left; background: var(--block); border-color: var(--line-strong); color: var(--soft) }
+.code-atlas .tree-node span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.code-atlas .tree-node small { color: var(--muted); flex: none }
+.code-atlas .tree-node.folder { color: var(--ink); background: var(--block-head) }
+.code-atlas .tree-node.closed { border-style: dashed }
+.code-atlas .tree-node.closed::after { content: "+"; color: var(--muted); margin-left: 2px }
+.code-atlas .tree-node.selected { background: var(--accent-soft); border-color: var(--accent); color: var(--ink) }
+.code-atlas .tree-node .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--field); flex: none }
+.code-atlas .tree-node .dot.kind-system { background: var(--center) } .code-atlas .tree-node .dot.kind-component { background: var(--tag) } .code-atlas .tree-node .dot.kind-rule { background: var(--event) }
+.code-atlas .list th:first-child { width: 30% }

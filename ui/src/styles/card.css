@@ -1,0 +1,55 @@
+.code-atlas aside { grid-column: 3; grid-row: 2; border-left: 1px solid var(--line); background: var(--panel); overflow: auto; padding: 18px 16px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; align-content: start; min-width: 0 }
+.code-atlas .card-body { display: grid; gap: 14px; min-width: 0 }
+.code-atlas .identity { display: grid; gap: 6px; min-width: 0 }
+.code-atlas .identity .name { font: 700 21px var(--mono) }
+.code-atlas .identity .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; color: var(--muted); font-size: 12px; min-width: 0 }
+.code-atlas .identity .doc { margin: 4px 0 0; color: var(--soft); font-size: 13px; white-space: pre-line }
+.code-atlas .badge { font: 600 10px var(--mono); text-transform: uppercase; letter-spacing: .08em; padding: 3px 8px; border-radius: var(--radius); background: var(--block-head); border: 1px solid var(--line-strong); color: var(--soft) }
+.code-atlas .badge.system { color: var(--center) } .code-atlas .badge.component { color: var(--tag) } .code-atlas .badge.rule { color: var(--event) } .code-atlas .badge.entity, .code-atlas .badge.stub { color: var(--fresh) }
+.code-atlas .card-tabs { border-bottom: 1px solid var(--line); padding-bottom: 6px }
+.code-atlas .block { border: 1px solid var(--line-strong); border-radius: var(--radius-large); background: var(--block); padding: 12px 14px; display: grid; gap: 10px; min-width: 0 }
+.code-atlas .block { padding: 0; gap: 0 }
+.code-atlas .block-head { display: flex; align-items: center; gap: 8px; width: 100%; background: none; border: 0; border-radius: 0; padding: 12px 14px; text-align: left; color: var(--ink) }
+.code-atlas .block-head:hover { background: var(--block-head) }
+.code-atlas .block-head::before { content: "˅"; color: var(--muted); font-size: 12px; width: 10px }
+.code-atlas .block.collapsed .block-head::before { content: "›" }
+.code-atlas .block-head h3 { margin: 0; flex: 1; font-size: 14px; font-weight: 600 }
+.code-atlas .block-body { padding: 0 14px 14px; display: grid; gap: 10px; min-width: 0 }
+.code-atlas .block.collapsed .block-body { display: none }
+.code-atlas .block-body .facts { border: 0; border-radius: 0; margin: 0 -14px -14px; border-top: 1px solid var(--line) }
+.code-atlas .count { font: 600 11px var(--mono); color: var(--accent); background: var(--accent-soft); border-radius: var(--radius-large); padding: 1px 8px }
+.code-atlas .chips { display: flex; flex-wrap: wrap; gap: 6px }
+.code-atlas .chip { font: 12px var(--mono); background: var(--block-head); border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 2px 8px; color: var(--soft); text-decoration: none; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis }
+.code-atlas a.chip:hover, .code-atlas .chip.go:hover { border-color: var(--accent); color: var(--ink); cursor: pointer }
+.code-atlas button.chip.more { color: var(--accent); background: var(--accent-soft); border-color: #3a2f63 }
+.code-atlas .chip.not { color: var(--bad); text-decoration: line-through } .code-atlas .chip.add { color: var(--tag) } .code-atlas .chip.remove { color: var(--bad) } .code-atlas .chip.event { color: var(--event) } .code-atlas .chip.port { color: var(--port) }
+.code-atlas table.details { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed }
+.code-atlas table.details th { text-align: left; font-weight: 400; color: var(--muted); width: 38%; padding: 4px 0; vertical-align: top }
+.code-atlas table.details td { color: var(--ink); padding: 4px 0 }
+.code-atlas .meter { display: inline-block; width: 70px; height: 6px; border-radius: 3px; background: var(--line-strong); margin-right: 8px; vertical-align: middle; overflow: hidden }
+.code-atlas .meter i { display: block; height: 100%; border-radius: 3px; background: var(--tag) }
+.code-atlas .meter.medium i { background: var(--fresh) } .code-atlas .meter.high i { background: var(--bad) }
+.code-atlas a.source { font: 12px var(--mono); color: var(--accent); text-decoration: none } .code-atlas a.source:hover { text-decoration: underline }
+.code-atlas .facts { border: 1px solid var(--line-strong); border-radius: var(--radius-large); overflow: hidden; background: var(--block) }
+.code-atlas .fact { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 10px; padding: 10px 14px; border-top: 1px solid var(--line); align-items: start }
+.code-atlas .fact:first-child { border-top: 0 }
+.code-atlas .fact > b { font: 600 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); padding-top: 3px }
+.code-atlas .fact.in > b { color: var(--event) } .code-atlas .fact.out > b { color: var(--tag) }
+.code-atlas .link { display: grid; gap: 4px; margin-bottom: 6px } .code-atlas .link:last-child { margin-bottom: 0 }
+.code-atlas .link .via { color: var(--muted); font: 11px var(--mono) }
+.code-atlas .line { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; font: 12px var(--mono); align-items: baseline }
+.code-atlas .line > :last-child { max-width: 180px; direction: rtl; text-align: right }
+.code-atlas aside details { border: 1px solid var(--line-strong); border-radius: var(--radius-large); background: var(--block) }
+.code-atlas aside details summary { padding: 10px 14px; cursor: pointer; color: var(--soft); font-size: 14px; font-weight: 600 }
+.code-atlas aside details .inner { padding: 4px 14px 12px; display: grid; gap: 8px }
+.code-atlas aside details h3 { margin: 6px 0 0; font: 600 11px var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .08em }
+.code-atlas .findings { border: 1px solid var(--line-strong); border-radius: var(--radius-large); background: var(--block); overflow: hidden }
+.code-atlas .findings h2 { margin: 0; padding: 10px 14px; font-size: 14px; font-weight: 600; border-bottom: 1px solid var(--line); box-shadow: inset 3px 0 0 var(--bad) }
+.code-atlas .finding { padding: 9px 14px; border-top: 1px solid var(--line); cursor: pointer; font-size: 13px; color: var(--soft) }
+.code-atlas .finding:first-of-type { border-top: 0 }
+.code-atlas .finding:hover { background: var(--block-head) }
+.code-atlas .finding em { display: block; font: 600 10px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--bad); font-style: normal }
+.code-atlas .identity .doc.generated { color: var(--muted); border-left: 2px solid var(--line-strong); padding-left: 10px; cursor: help }
+.code-atlas .block-head .icon { color: var(--muted); margin-right: 0 }
+.code-atlas .findings h2 .icon { color: var(--bad) }
+.code-atlas .card-tabs .count { margin-left: 6px }

@@ -1,0 +1,52 @@
+{
+  "name": "code-atlas",
+  "version": "0.1.0",
+  "description": "A living map of a TypeScript codebase built from the AST: ECS systems, components and the data flow of a frame, or calls between functions in any project. A viewer for people, a CLI for agents.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DmitriyGolub/code-atlas.git"
+  },
+  "bin": {
+    "code-atlas": "bin/code-atlas.mjs"
+  },
+  "exports": {
+    ".": "./src/index.mjs",
+    "./viewer": "./viewer/code-atlas-ui.js",
+    "./viewer/style.css": "./viewer/code-atlas-ui.css"
+  },
+  "files": [
+    "bin",
+    "src",
+    "viewer",
+    "schema",
+    "skills",
+    "llms.txt",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build:ui": "node ui/build.mjs",
+    "check:ui": "tsc -p ui/tsconfig.json"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "typescript": "5.9.3"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  },
+  "keywords": [
+    "ecs",
+    "bitecs",
+    "code-map",
+    "static-analysis",
+    "architecture",
+    "documentation",
+    "typescript",
+    "ai-agents"
+  ]
+}

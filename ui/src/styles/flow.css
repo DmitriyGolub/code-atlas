@@ -1,0 +1,36 @@
+.code-atlas .dock { border-top: 1px solid var(--line-strong); background: var(--panel); height: clamp(220px, 40vh, 420px); display: grid; grid-template-rows: auto minmax(0, 1fr); min-width: 0 }
+.code-atlas .dock-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 8px 14px; border-bottom: 1px solid var(--line); min-width: 0 }
+.code-atlas .dock-title { font: 600 12px var(--mono); color: var(--muted); margin-left: auto; min-width: 0 }
+.code-atlas .dock-head > button:last-child { flex: none }
+.code-atlas .dock-body { display: grid; grid-template-columns: minmax(0, 1fr) auto; min-height: 0 }
+.code-atlas .flow { position: relative; overflow: auto; min-width: 0 }
+.code-atlas .flow svg { display: block }
+.code-atlas .flow-heads { position: sticky; top: 0; height: 34px; background: var(--panel); z-index: 3; border-bottom: 1px solid var(--line) }
+.code-atlas .overlay .flow-heads { background: var(--bg) }
+.code-atlas .flow-title { position: absolute; top: 8px; padding-left: 10px; border-left: 2px solid var(--accent) }
+.code-atlas .flow-title b { font: 600 12px var(--mono); letter-spacing: .06em; color: var(--ink); white-space: nowrap }
+.code-atlas .flow-node { cursor: pointer }
+.code-atlas .flow-node rect, .code-atlas .flow-node path { fill: var(--block); stroke: var(--stroke, var(--line-strong)); stroke-width: 1.3 }
+.code-atlas .flow-node .table-line { stroke: var(--line-strong); stroke-width: 1 }
+.code-atlas .flow-node.shape-component rect { fill: #13161d } .code-atlas .flow-node.shape-tag rect { fill: #14201a } .code-atlas .flow-node.shape-event path { fill: #141c29 } .code-atlas .flow-node.shape-port path { fill: #221827 } .code-atlas .flow-node.shape-create rect { fill: transparent }
+.code-atlas .flow-node:hover rect, .code-atlas .flow-node:hover path { stroke: var(--accent) }
+.code-atlas .flow-node text { fill: var(--ink); font: 12px var(--mono) }
+.code-atlas .flow-node text.sub { fill: var(--muted); font-size: 10px }
+.code-atlas .flow-node.center rect, .code-atlas .flow-node.center path { fill: #0f2523; stroke: var(--center); stroke-width: 1.8 }
+.code-atlas .flow-node.center text { font-weight: 600 }
+.code-atlas .flow-node.dim { opacity: .25 } .code-atlas .flow-edge.dim { opacity: .08 } .code-atlas .flow-edge.lit { stroke-width: 2.4 }
+.code-atlas .flow-node.focused rect, .code-atlas .flow-node.focused path { stroke: var(--accent); stroke-width: 2.2 }
+.code-atlas .flow-edge { fill: none; stroke-width: 1.4; opacity: .8 }
+.code-atlas .flow-info { width: min(340px, 40vw); border-left: 1px solid var(--line-strong); background: var(--block); overflow: auto; padding: 12px 14px; display: grid; gap: 10px; align-content: start }
+.code-atlas .flow-info .info-title { display: flex; justify-content: space-between; align-items: center; gap: 8px; font: 600 13px var(--mono) }
+.code-atlas .flow-info .info-title button { padding: 0 8px }
+.code-atlas .flow-info .what { color: var(--muted); font-size: 12px }
+.code-atlas .flow-info .item { border-top: 1px solid var(--line); padding-top: 8px; display: grid; gap: 4px }
+.code-atlas .flow-info .item > .line b { font: 600 12px var(--mono); overflow: hidden; text-overflow: ellipsis }
+.code-atlas .flow-info .who { display: grid; gap: 3px; padding-left: 10px; border-left: 2px solid var(--line-strong) }
+.code-atlas .flow-info .who .label { font-size: 11px; color: var(--muted) }
+.code-atlas .overlay { position: fixed; inset: 0; background: var(--bg); z-index: 50; display: grid; grid-template-rows: auto minmax(0, 1fr) }
+.code-atlas .overlay .flow { padding: 10px 20px }
+.code-atlas .overlay .flow-info { width: min(420px, 40vw) }
+.code-atlas .flow-info > *, .code-atlas .flow-info .item, .code-atlas .flow-info .who, .code-atlas .flow-info .line > * { min-width: 0 }
+.code-atlas .flow-info .info-title button { flex: none }

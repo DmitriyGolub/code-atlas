@@ -1,0 +1,48 @@
+# code-atlas
+
+> A map of a TypeScript codebase built from the AST and the type checker, including NestJS and Angular classes and ECS that works through `world.getComponent` and `world.addSystem`. For ECS games it records every system, the components it queries, reads and writes, the tags and events it emits, the frame order and the tests that cover it. For any TypeScript project it records symbols, who calls whom and what a change affects. The map lives in `docs/code-atlas/code-atlas.json` next to the code and is rebuilt on commit, so it does not go stale.
+
+Read the map instead of searching files. Every fact in it has `file:line`.
+
+## Commands
+
+- `npx code-atlas init`: find the components, systems, tests and frame file, write `code-atlas.config.json`. Run once.
+- `npx code-atlas build`: write the map. A pre-commit hook usually does this.
+- `npx code-atlas focus <system>`: one system with its doc comment, data, rules, tests and neighbours.
+- `npx code-atlas impact <symbol>`: callers, frame systems that run it, what it writes, who reads that, tests to run. Use before every edit.
+- `npx code-atlas diff [ref]`: what a change did to the frame. For stubs, PLAN VS CODE compares the `//` criteria with the code.
+- `npx code-atlas findings`: next-frame, wide and write-only findings.
+- `npx code-atlas docs`: exported symbols without a `/** */` comment, most used first.
+- `npx code-atlas check`: fails when the map is older than the code. For CI.
+- `npx code-atlas serve`: the viewer for people.
+
+Large projects can set `"split": "auto"`: the map becomes `index.json` (modules and calls between them) plus one file per module. The commands above work the same way.
+
+## Rules for agents
+
+- Before changing a symbol run `impact` and name the affected systems and tests in your plan.
+- After the change run `diff` and report new systems, links and findings. Never add to `findings.accepted`; a person decides that.
+- To improve documentation run `docs` and add one or two sentences above the top symbols: purpose and guarantees. Behaviour belongs in tests.
+- Answer questions about structure with `file:line` from the map, not from memory.
+
+## Suggest once
+
+- If no pre-commit hook rebuilds the map, offer once to add `npx code-atlas build` to it.
+- If the map is several megabytes or the repository is a monorepo, mention once that `"split": "auto"` writes one file per package. The default is one file.
+
+## When a symbol shows no tests
+
+The map links a test to a symbol when the test body or a helper in `testHelpers` uses it, and shows tests that reach it through callers separately. If tests exist but the map does not see them:
+
+1. Find them: `*.test.ts`, `*.spec.ts`, `*.e2e.ts` next to the code, or folders like `tests/`, `test/`, `__tests__/`, `spec/`, `qa/`, `.qa/`, `e2e/`.
+2. A folder the map does not scan goes into `tests` in `code-atlas.config.json`, for example `"tests": [".qa"]`.
+3. Another file naming goes into `testPattern`, another runner (for example `scenario('...', fn)`) into `testRunners`.
+4. Shared setup code goes into `testHelpers`, so symbols used only through it still count.
+5. Run `npx code-atlas build` and check the symbol again. Say in your report what you changed.
+
+## Files
+
+- [README](README.md): install, configuration, the viewer, the workflow
+- [Agent skill](skills/code-atlas/SKILL.md): the same rules as a Claude Code skill
+- [Spec schema](schema/code-atlas.schema.json): every key of `code-atlas.json`
+- [Config schema](schema/config.schema.json): every key of `code-atlas.config.json`

@@ -1,0 +1,37 @@
+.code-atlas .sidebar { grid-column: 1; grid-row: 2; background: var(--panel); border-right: 1px solid var(--line); overflow: auto; display: flex; flex-direction: column; min-width: 0 }
+.code-atlas .panel { border-bottom: 1px solid var(--line); padding: 12px 10px }
+.code-atlas .panel-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 0 6px 8px }
+.code-atlas .panel-head .chevron { flex: 1; display: flex; justify-content: space-between; align-items: center; background: none; border: 0; padding: 2px 0; font: 600 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); text-align: left }
+.code-atlas .panel-head .chevron:hover { color: var(--ink) }
+.code-atlas .panel-head .chevron::after { content: "˄"; font-size: 13px; letter-spacing: 0 }
+.code-atlas .panel.collapsed .panel-head .chevron::after { content: "˅" }
+.code-atlas .panel.collapsed .panel-head { padding-bottom: 0 }
+.code-atlas .panel.collapsed .panel-body { display: none }
+.code-atlas .panel:first-child { flex: 1 1 auto; min-height: 180px; overflow: auto }
+.code-atlas .panel.collapsed:first-child { flex: none; min-height: 0 }
+.code-atlas .filter { display: flex; align-items: center; gap: 10px; padding: 4px 6px; color: var(--soft); font-size: 13px; cursor: pointer; border-radius: var(--radius) }
+.code-atlas .filter:hover { background: var(--block) }
+.code-atlas .filter i { width: 14px; height: 10px; border: 2px solid; border-radius: 3px }
+.code-atlas .metric { display: flex; justify-content: space-between; padding: 4px 6px; font-size: 13px; color: var(--soft) }
+.code-atlas .metric b { font: 600 13px var(--mono); color: var(--ink) }
+
+.code-atlas .tree { font: 12px var(--mono) }
+.code-atlas .tree details { border: 0; background: none }
+.code-atlas .tree summary { list-style: none; padding: 3px 6px; display: flex; justify-content: space-between; gap: 8px; color: var(--soft); border-radius: var(--radius); cursor: pointer }
+.code-atlas .tree summary::-webkit-details-marker { display: none }
+.code-atlas .tree summary::before { content: "›"; color: var(--muted); width: 10px; flex: none; transition: transform .1s }
+.code-atlas .tree details[open] > summary::before { transform: rotate(90deg) }
+.code-atlas .tree summary span { flex: 1 }
+.code-atlas .tree summary small { color: var(--muted) }
+.code-atlas .tree summary:hover, .code-atlas .tree-item:hover { background: var(--block) }
+.code-atlas .tree-level { padding-left: 8px; margin-left: 8px; border-left: 1px solid var(--line) }
+.code-atlas .tree > .tree-level { padding-left: 0; margin-left: 0; border-left: 0 }
+.code-atlas .tree-item { padding: 3px 6px 3px 16px; cursor: pointer; color: var(--muted); border-radius: var(--radius) }
+.code-atlas .tree-item i { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 8px; background: var(--field); vertical-align: middle }
+.code-atlas .tree-item.kind-system i { background: var(--center) } .code-atlas .tree-item.kind-component i { background: var(--tag) } .code-atlas .tree-item.kind-rule i { background: var(--event) }
+.code-atlas .tree-item.current { background: var(--accent-soft); color: var(--ink); box-shadow: inset 2px 0 0 var(--accent) }
+.code-atlas .metric span { display: inline-flex; align-items: center }
+.code-atlas .tree summary span { display: inline-flex; align-items: center }
+.code-atlas .tree .icon { color: var(--muted); margin-right: 5px }
+.code-atlas .panel-head .chevron span { display: inline-flex; align-items: center }
+.code-atlas .tree-item.member { padding-left: 30px }

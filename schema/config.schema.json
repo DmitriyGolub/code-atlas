@@ -1,0 +1,326 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "code-atlas config",
+  "description": "code-atlas.config.json in the project root. Every key is optional and falls back to the default.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "tsconfig": {
+      "type": "string",
+      "default": "tsconfig.json"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [
+        "src"
+      ],
+      "description": "Directories with application code"
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [
+        "tests"
+      ]
+    },
+    "testHelpers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [
+        "tests/support"
+      ],
+      "description": "Helpers whose bodies count toward the test that calls them"
+    },
+    "simulationHelpers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [
+        "simulate",
+        "runSystems"
+      ],
+      "description": "A test that uses one of these runs the whole frame"
+    },
+    "out": {
+      "type": "string",
+      "default": "docs/code-atlas",
+      "description": "Where the spec, schema and viewer are written"
+    },
+    "layers": {
+      "type": "object",
+      "properties": {
+        "components": {
+          "type": "string",
+          "description": "Directory where component stores are declared"
+        },
+        "systems": {
+          "type": "string",
+          "description": "Directory with one system per file"
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Factories; their writes count as creation"
+        },
+        "config": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "game": {
+          "type": "string",
+          "description": "Everything else here is a rule"
+        },
+        "outside": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Callers here are public contracts"
+        }
+      }
+    },
+    "conventions": {
+      "type": "object",
+      "properties": {
+        "systemSuffix": {
+          "type": "string",
+          "default": "System"
+        },
+        "querySuffix": {
+          "type": "string",
+          "default": "Query"
+        },
+        "queryFactory": {
+          "type": "string",
+          "default": "defineQuery"
+        },
+        "excludeTerm": {
+          "type": "string",
+          "default": "Not"
+        },
+        "addTag": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "addComponent"
+          ]
+        },
+        "removeTag": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "removeComponent"
+          ]
+        },
+        "addTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "addComponents"
+          ]
+        },
+        "events": {
+          "type": "string",
+          "default": "events",
+          "description": "Name of the per-frame events object"
+        },
+        "ports": {
+          "type": "object",
+          "properties": {
+            "object": {
+              "type": "string",
+              "default": "world"
+            },
+            "names": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "pipeline": {
+      "type": "object",
+      "properties": {
+        "file": {
+          "type": "string",
+          "description": "File that declares the frame order"
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Top-level constants that hold a full pipeline; merged in order"
+        },
+        "view": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Constant with the view systems; they run after the simulation"
+        },
+        "modes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Mode name for each entry"
+        }
+      }
+    },
+    "criteria": {
+      "type": "object",
+      "description": "Words in // criteria of stubs that mean adding or removing a tag",
+      "properties": {
+        "add": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "remove": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "object",
+      "properties": {
+        "hubReaders": {
+          "type": "integer",
+          "default": 10
+        },
+        "wideSystem": {
+          "type": "integer",
+          "default": 6
+        },
+        "ignoreWriteOnlyIn": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "accepted": {
+          "description": "Findings a person reviewed and kept on purpose. diff --strict does not fail on them.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "kind",
+              "system",
+              "reason"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "next-frame",
+                  "wide",
+                  "write-only"
+                ]
+              },
+              "system": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "testPattern": {
+      "type": "string",
+      "description": "Regular expression for test files next to the code",
+      "default": "\\.(test|spec|e2e)\\.tsx?$"
+    },
+    "testRunners": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Functions that declare a test; modifiers like .only, .skip and .each are understood",
+      "default": [
+        "it",
+        "test"
+      ]
+    },
+    "testFolders": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Folder names init looks for at the root as test folders",
+      "default": [
+        "tests",
+        "test",
+        "__tests__",
+        "spec",
+        "qa",
+        ".qa",
+        "e2e"
+      ]
+    },
+    "skipFolders": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Folder names never scanned",
+      "default": [
+        "node_modules",
+        "dist",
+        "build",
+        "coverage",
+        ".git",
+        ".next",
+        ".turbo",
+        "out"
+      ]
+    },
+    "split": {
+      "description": "Write one file per module plus index.json instead of one code-atlas.json. \"auto\" splits by workspace packages, or by the folders inside each source folder; a list of paths or \"folder/*\" patterns sets the modules. Recommended for large projects and monorepos.",
+      "default": false,
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "const": "auto"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    }
+  }
+}
