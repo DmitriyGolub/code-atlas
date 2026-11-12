@@ -23,6 +23,9 @@ jobs:
       - run: npm test
       - name: The release tag matches package.json
         run: test "v$(node -p "require('./package.json').version")" = "${{ github.event.release.tag_name }}"
-      - run: npm publish --provenance --access public
+      - name: npm with trusted publishing support
+        run: npm install --global npm@latest
+      - name: Publish, through trusted publishing or the NPM_TOKEN secret if it is set
+        run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
